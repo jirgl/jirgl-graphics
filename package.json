@@ -1,0 +1,24 @@
+{
+  "name": "jirgl-graphics",
+  "version": "0.1.0",
+  "description": "library with useful graphical algorithms and functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jirgl/jirgl-graphics.git"
+  },
+  "keywords": [
+    "colors",
+    "color-models",
+    "converters"
+  ],
+  "author": "Jakub Jirgl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jirgl/jirgl-graphics/issues"
+  },
+  "homepage": "https://github.com/jirgl/jirgl-graphics#readme"
+}
