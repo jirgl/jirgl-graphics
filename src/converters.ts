@@ -1,6 +1,9 @@
 import { hex, hsv, rgb, rgba } from './colorModels';
 
 export function rgbToHex(rgb: rgb): hex {
+    if (rgb.r < 0 || rgb.r > 255 || rgb.g < 0 || rgb.g > 255 || rgb.b < 0 || rgb.b > 255)
+        return null;
+
     let red = rgb.r.toString(16);
     let green = rgb.g.toString(16);
     let blue = rgb.b.toString(16);
@@ -11,21 +14,10 @@ export function rgbToHex(rgb: rgb): hex {
     return '#' + red + green + blue;
 }
 
-export function rgbaToHex(rgba: rgba): hex {
-    let red = rgba.r.toString(16);
-    let green = rgba.g.toString(16);
-    let blue = rgba.b.toString(16);
-    let alpha = rgba.a.toString(16);
-
-    red = red.length < 2 ? '0' + red : red;
-    green = green.length < 2 ? '0' + green : green;
-    blue = blue.length < 2 ? '0' + blue : blue;
-    alpha = alpha.length < 2 ? '0' + alpha : alpha;
-    return '#' + red + green + blue;
-}
-
 export function hexToRgb(hex: hex): rgb {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!result) return null;
+
     return {
         r: parseInt(result[1], 16),
         g: parseInt(result[2], 16),
@@ -63,7 +55,7 @@ export function hsvToRgb(hsv: hsv): rgb {
     return rgb;
 }
 
-export function rgbToHue(rgb: rgb): number {
+export function rgbToHsv(rgb: rgb): hsv {
     const r = rgb.r / 255;
     const g = rgb.g / 255;
     const b = rgb.b / 255;
@@ -73,7 +65,7 @@ export function rgbToHue(rgb: rgb): number {
     let hue: number;
 
     if (delta === 0) {
-        return 0;
+        hue = 0;
     } else if (max === r) {
         hue = 60 * (((g - b) / delta) % 6);
     } else if (max === g) {
@@ -82,5 +74,5 @@ export function rgbToHue(rgb: rgb): number {
         hue = 60 * (((r - g) / delta) + 4);
     }
 
-    return hue < 0 ? 360 + hue : hue;
+    return { h: hue < 0 ? 360 + hue : hue, s: 1, v: 1 };
 }
