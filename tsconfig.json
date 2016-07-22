@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "reactNamespace": "b"
+    },
+    "compileOnSave": false,
+    "files": [
+        "C:/Users/jirgl/AppData/Roaming/npm/node_modules/bobril-build/typings/jasmine/jasmine.d.ts",
+        "index.ts",
+        "node_modules/bobril/jsx.d.ts",
+        "spec/convertersSpec.ts",
+        "src/colorModels.ts",
+        "src/converters.ts"
+    ]
+}
