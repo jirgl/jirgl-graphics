@@ -1,6 +1,6 @@
 {
   "name": "jirgl-graphics",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "library with useful graphical algorithms and functions",
   "main": "index.js",
   "scripts": {
