@@ -1,8 +1,15 @@
 import { hex, hsv, rgb, rgba } from './colorModels';
 
+function isValidRgb(rgb: rgb): boolean {
+    return rgb.r >= 0 && rgb.r <= 255 && rgb.g >= 0 && rgb.g <= 255 && rgb.b >= 0 && rgb.b <= 255;
+}
+
+function isValidHsv(hsv: hsv): boolean {
+    return hsv.h >= 0 && hsv.h <= 360 && hsv.s >= 0 && hsv.s <= 1 && hsv.v >= 0 && hsv.v <= 1;
+}
+
 export function rgbToHex(rgb: rgb): hex {
-    if (rgb.r < 0 || rgb.r > 255 || rgb.g < 0 || rgb.g > 255 || rgb.b < 0 || rgb.b > 255)
-        return null;
+    if (!isValidRgb(rgb)) return null;
 
     let red = rgb.r.toString(16);
     let green = rgb.g.toString(16);
@@ -26,10 +33,13 @@ export function hexToRgb(hex: hex): rgb {
 }
 
 export function hsvToHex(hsv: hsv): hex {
+    if (!isValidHsv(hsv)) return null;
     return rgbToHex(hsvToRgb(hsv));
 }
 
 export function hsvToRgb(hsv: hsv): rgb {
+    if (!isValidHsv(hsv)) return null;
+
     const c = hsv.v * hsv.s;
     const x = c * (1 - Math.abs((hsv.h / 60) % 2 - 1));
     const m = hsv.v - c;
@@ -56,14 +66,17 @@ export function hsvToRgb(hsv: hsv): rgb {
 }
 
 export function rgbToHsv(rgb: rgb): hsv {
+    if (!isValidRgb(rgb)) return null;
+
     const r = rgb.r / 255;
     const g = rgb.g / 255;
     const b = rgb.b / 255;
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
     const delta = max - min;
-    let hue: number;
+    const saturation = max === 0 ? 0 : delta / max;
 
+    let hue: number;
     if (delta === 0) {
         hue = 0;
     } else if (max === r) {
@@ -74,5 +87,9 @@ export function rgbToHsv(rgb: rgb): hsv {
         hue = 60 * (((r - g) / delta) + 4);
     }
 
-    return { h: hue < 0 ? 360 + hue : hue, s: 1, v: 1 };
+    return {
+        h: hue < 0 ? 360 + hue : hue,
+        s: saturation,
+        v: max
+    };
 }
