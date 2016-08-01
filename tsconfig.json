@@ -12,7 +12,9 @@
         "index.ts",
         "node_modules/bobril/jsx.d.ts",
         "spec/convertersSpec.ts",
+        "spec/validationsSpec.ts",
         "src/colorModels.ts",
-        "src/converters.ts"
+        "src/converters.ts",
+        "src/validations.ts"
     ]
 }
