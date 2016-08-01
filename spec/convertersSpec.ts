@@ -21,6 +21,16 @@ describe('Converters', () => {
         expect(converter.hexToRgb('#-100000')).toEqual(null);
     });
 
+    it('from rgb to gray', () => {
+        expect(converter.rgbToGray({ r: 0, g: 0, b: 0 })).toBe(0);
+        expect(converter.rgbToGray({ r: 128, g: 0, b: 0 })).toBe(38.272);
+        expect(converter.rgbToGray({ r: 255, g: 255, b: 255 })).toBe(255);
+
+        expect(converter.rgbToGray({ r: 256, g: 0, b: 0 })).toBe(null);
+        expect(converter.rgbToGray({ r: -1, g: 0, b: 0 })).toBe(null);
+        expect(converter.rgbToGray({ r: undefined, g: 0, b: 0 })).toBe(null);
+    });
+
     it('from rgb to hsv', () => {
         expect(converter.rgbToHsv({ r: 83, g: 115, b: 29 }))
             .toEqual({ h: 82.32558139534883, s: 0.7478260869565218, v: 0.45098039215686275 });

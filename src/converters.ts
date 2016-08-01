@@ -1,10 +1,10 @@
 import { hex, hsv, rgb, rgba } from './colorModels';
 
-function isValidRgb(rgb: rgb): boolean {
+export function isValidRgb(rgb: rgb): boolean {
     return rgb.r >= 0 && rgb.r <= 255 && rgb.g >= 0 && rgb.g <= 255 && rgb.b >= 0 && rgb.b <= 255;
 }
 
-function isValidHsv(hsv: hsv): boolean {
+export function isValidHsv(hsv: hsv): boolean {
     return hsv.h >= 0 && hsv.h <= 360 && hsv.s >= 0 && hsv.s <= 1 && hsv.v >= 0 && hsv.v <= 1;
 }
 
@@ -30,6 +30,12 @@ export function hexToRgb(hex: hex): rgb {
         g: parseInt(result[2], 16),
         b: parseInt(result[3], 16)
     };
+}
+
+export function rgbToGray(rgb: rgb): number {
+    if (!isValidRgb(rgb)) return null;
+
+    return 0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b;
 }
 
 export function hsvToHex(hsv: hsv): hex {
