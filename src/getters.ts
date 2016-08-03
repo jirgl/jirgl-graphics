@@ -2,7 +2,7 @@ import { rgb } from './colorModels';
 import * as converters from './converters';
 
 const contrastColorThreshold = 186;
-const contrastColorLinearRange = 10;
+const contrastColorLinearRange = 6;
 const whiteColor = { r: 255, g: 255, b: 255 };
 const blackColor = { r: 0, g: 0, b: 0 };
 
