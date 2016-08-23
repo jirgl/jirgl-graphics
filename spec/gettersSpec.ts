@@ -1,4 +1,4 @@
-import * as getters from '../src/getters';
+import * as getters from '../src/colors/getters';
 
 describe('Getters', () => {
     it('get contrast color', () => {

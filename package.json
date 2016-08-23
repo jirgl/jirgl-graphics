@@ -4,7 +4,7 @@
   "description": "library with useful graphical algorithms and functions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jirgl/jirgl-graphics/issues"
   },
-  "homepage": "https://github.com/jirgl/jirgl-graphics#readme"
+  "homepage": "https://github.com/jirgl/jirgl-graphics#readme",
+  "devDependencies": {
+    "jasmine-es6": "^0.2.2"
+  }
 }

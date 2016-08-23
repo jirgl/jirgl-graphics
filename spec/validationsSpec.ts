@@ -1,4 +1,4 @@
-import * as validations from '../src/validations';
+import * as validations from '../src/colors/validations';
 
 describe('Validations', () => {
     it('rgb validation', () => {

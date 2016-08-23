@@ -1,4 +1,4 @@
-import * as converter from '../src/converters';
+import * as converter from '../src/colors/converters';
 
 describe('Converters', () => {
     it('from rgb to hex', () => {
