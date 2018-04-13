@@ -1,9 +1,12 @@
 {
     "compilerOptions": {
+        "outDir": "./dist/",
         "module": "commonjs",
-        "noImplicitAny": true,
+        "target": "es6",
         "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": true
-    }
+        "declaration": true
+    },
+    "exclude": [
+        "spec"
+    ]
 }
